@@ -65,6 +65,7 @@ export default function(robot) {
     }
 
     robot.respond(/add hook "(.+?)":(?: (json|plaintext))? (\w+) (\S+)$/i,
+        { id: 'webhookcmd.add' },
         asyncify(async (res) => {
             const [, matcher, type = 'plaintext', method, url] = res.match;
 
