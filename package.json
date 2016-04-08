@@ -5,7 +5,10 @@
   "license": "MIT",
   "main": "lib/index.js",
   "author": "Raymond Hammarling",
-  "repository": "raymond-h/hubot-webhook-cmds",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymond-h/hubot-webhook-cmds"
+  },
   "scripts": {
     "lint": "eslint src/ test/",
     "test": "mocha --compilers js:babel-register,es6:babel-register,es6.js:babel-register test/",
