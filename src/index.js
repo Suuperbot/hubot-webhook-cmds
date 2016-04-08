@@ -2,7 +2,8 @@
 //   Webhooks as commands for your local Hubot!
 //
 // Commands:
-//   hubot add hook
+//   hubot add hook "<regex to match>": <method> <url>
+//   hubot add hook "<regex to match>": [format] <method> <url>
 //
 // Author:
 //   https://github.com/raymond-h/
