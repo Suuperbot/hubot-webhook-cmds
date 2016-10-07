@@ -65,6 +65,12 @@ export default function(robot) {
         );
     }
 
+    setTimeout(() => {
+        for(const { matcher, type, method, url } of robot.brain.get('webhookcmd-commands')) {
+            addCommand(matcher, type, method, url);
+        }
+    }, 1000);
+
     robot.respond(/add hook "(.+?)":(?: (json|plaintext))? (\w+) (\S+)$/i,
         { id: 'webhookcmd.add' },
         asyncify(async (res) => {
@@ -73,6 +79,11 @@ export default function(robot) {
             res.reply('OK SO when I hear "' + matcher + '", I should ' + method + ' ' + url);
 
             addCommand(matcher.trim(), type, method, url);
+
+            const cmds = robot.brain.get('webhookcmd-commands') || [];
+            robot.brain.set('webhookcmd-commands', [
+                ...cmds, { matcher: matcher.trim(), type, method, url }
+            ]);
         })
     );
 }
